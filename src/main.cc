@@ -19,24 +19,32 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800,600), "Final Game");
     window.setFramerateLimit(60);
 
+    //Fuente
     sf::Font font;
     font.loadFromFile("assets/fonts/SweaterStitch.ttf");
     sf::Text text;
-
+    //Color de fuente
     text.setFillColor(sf::Color::Black);
     text.setFont(font);
 
+    //Declaración
     Character santa;
     Gift gift;
     gift.respawn();
     
     int score=0;
 
+    //Fondo
     sf::Sprite image;
     sf::Texture tex;
     tex.loadFromFile("assets/sprites/snow.jpg");
-
     image.setTexture(tex);
+
+    //Sonido
+    sf::SoundBuffer buffer;
+    buffer.loadFromFile("assets/audio/ring.wav");
+    sf::Sound sound;
+    sound.setBuffer(buffer);
 
 
     //Game lop (update del juego)
@@ -59,6 +67,7 @@ int main()
         {
             gift.respawn();
             score++;
+            sound.play();
         }
         text.setString(" SCORE: "+std::to_string(score));
 
