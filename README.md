@@ -45,7 +45,7 @@ Para contar el score utilizamos la interacción de el personaje con los regalos 
 
 # 3.- Contenido de clases 
 * En la clase Main es donde incluimos toda la programación esencial del juego, aquí es donde cargamos todas las interacciones que tienen los personajes y es donde programas el sistema de puntaje y de vidas para que se pueda interactuar con las otras clases de una manera simple.
-* En la clase de Character es la clase que utilizamos para darle texturas, aplicarle movimiento y los colliders a nuestro personaje, aquí es donde se anima el personaje y donde se ve creo el movimiento de Claus
+* En la clase de Character es la clase que utilizamos para darle texturas, aplicarle movimiento y los colliders a nuestro personaje, aquí es donde se anima el personaje y donde se ve el movimiento de nuestro personaje.
 * En la clase Collisionable escribimos el código necesario para las interacciones que tiene nuestro personaje con el enemigo y el objeto que implementamos, gracias a esto se pueden detectar las colisiones que tiene el personaje con los otros objetos del juego.
 * En la clase Gift incluimos los parámetros para el regalo y la manera en que interactúa con el personaje, aquí es donde le aplicamos el respawn al regalo y hicimos que apareciera en otro lado cada vez que se detectaba una interacción con Claus.
 * En la clase Enemy es donde se programó el movimiento y las texturas del monstruo, a diferencia de la clase gift, el enemigo lo hicimos un objeto constante que no respawnea en otro lado del mapa después de interactuar con el personaje.
