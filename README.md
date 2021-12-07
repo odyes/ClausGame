@@ -1,3 +1,7 @@
+#### Integrantes
+Alejandra Odalys Esquer García
+Jorge Castro Luna
+
 # 1.- Introducción
 
 ### 1.1 Abstract
