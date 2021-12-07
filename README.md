@@ -22,5 +22,6 @@ Durante el siglo XVIII, una imagen de San Nicolás de Bari vestido de obispo y d
 
 ## 2.1 Diseño y temática del juego
 Ya que nos decidimos por tener una temática navideña, comenzamos a buscar los sprites que utilizaríamos para la creación de nuestro videojuego. Después de conseguir ideas decidimos utilizar de personaje a Santa Claus ya que es un personaje altamente reconocible y fácil de implementar en un juego. Después de definir el personaje, comenzamos a pensar sobre la dinámica del juego y utilizamos un regalo como el objeto a buscar y a un monstruo como el enemigo principal. Con esto establecido pudimos investigar en línea y encontramos sprites que se apegaban a la ambientación que estábamos buscando (Creditos a los autores en bibliografía).
-![alt text](https://raw.githubusercontent.com/odyes/ClausGame/assets//sprites/santa2.png)
 ![alt text](https://github.com/odyes/ClausGame/blob/main/assets/sprites/santa2.png)
+![alt text](https://github.com/odyes/ClausGame/blob/main/assets/sprites/gift.png)
+![alt text](https://github.com/odyes/ClausGame/blob/main/assets/sprites/snow.jpg)
