@@ -17,8 +17,16 @@ int main()
     std::srand((unsigned)std::time(0));
 
     // Inicialización de la ventana-----ancho, alto                  
-    sf::RenderWindow window(sf::VideoMode(800,600), "Final Game");
+    sf::RenderWindow window(sf::VideoMode(800,600), "Claus Game");
     window.setFramerateLimit(60);
+
+    //icon
+    sf::Image icon;
+    if(!icon.loadFromFile("assets/sprites/icon.png"))
+    {
+        return -1;
+    }
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     //Fuente
     sf::Font font;
@@ -59,11 +67,21 @@ int main()
     buffer.loadFromFile("assets/audio/ring.wav");
     sf::Sound sound;
     sound.setBuffer(buffer);
+    
+    sf::Music music;
+    music.openFromFile("assets/audio/music.ogg");
+    music.setVolume(5);
+    music.play();
 
+    /*sf::SoundBuffer* musicBuffer{new sf::SoundBuffer()};
+    sf::Sound* musicSound{new sf::Sound()};
+    musicBuffer->loadFromFile("assets/audio/music.ogg");
+    musicSound->setBuffer(*musicBuffer);*/
 
     //Game loop (update del juego)
     while(window.isOpen())
     {
+
         sf::Event event;
         while(window.pollEvent(event))
         {
@@ -114,7 +132,8 @@ int main()
         lifesText.setString(" LIFES: "+ std::to_string(lifes));
 
         window.clear();
-
+        
+        //Draw
         window.draw(image);
         window.draw(santa);
         window.draw(gift);
@@ -123,8 +142,7 @@ int main()
         window.draw(enemy);
         window.draw(textMessage);
         
-        
-        //Draw
+    
         //Display-flip
         window.display();
         
