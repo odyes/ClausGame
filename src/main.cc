@@ -10,6 +10,7 @@
 
 #include "Character.hh"
 #include "Gift.hh"
+#include "Enemy.hh"
 
 int main()
 {    
@@ -22,17 +23,30 @@ int main()
     //Fuente
     sf::Font font;
     font.loadFromFile("assets/fonts/SweaterStitch.ttf");
-    sf::Text text;
+
+    sf::Text text, lifesText, textMessage;
+    text.setFont(font);
+    lifesText.setFont(font);
+    textMessage.setFont(font);
+
+    lifesText.setPosition({0, 50});
+    textMessage.setPosition({150,150});
+
     //Color de fuente
     text.setFillColor(sf::Color::Black);
-    text.setFont(font);
+    lifesText.setFillColor(sf::Color::Black);
+    textMessage.setFillColor(sf::Color::Red);
 
     //Declaración
     Character santa;
     Gift gift;
     gift.respawn();
-    
+
+    Enemy enemy;
+    enemy.respawn();
+
     int score=0;
+    int lifes=3;
 
     //Fondo
     sf::Sprite image;
@@ -47,7 +61,7 @@ int main()
     sound.setBuffer(buffer);
 
 
-    //Game lop (update del juego)
+    //Game loop (update del juego)
     while(window.isOpen())
     {
         sf::Event event;
@@ -59,17 +73,45 @@ int main()
 
         //CMD- ejecutar los comandos
 
-       
-        //Update- Actualiza los estados del juego
-        santa.update();
-
-        if(santa.isCollision(gift))
+        if(lifes>0)
         {
-            gift.respawn();
-            score++;
-            sound.play();
+            //Update- Actualiza los estados del juego
+            enemy.update();
+            santa.cmd();
+            santa.update();
+
+            if(santa.isCollision(gift))
+            {
+                gift.respawn(); //Se vuelve a dibujar en otro lado
+                score++;
+                sound.play();
+            }
+        
+            //Colisiona con el enemigo
+            if(santa.isCollision(enemy))
+            {
+                santa.hited();
+                enemy.walloper();
+
+                lifes--;
+                //enemy.respawn();
+            }
+            textMessage.setString("");
         }
+        else 
+        {
+            textMessage.setString("PRESIONA ENTER PARA CONTINUAR");
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+            {
+                lifes=3;
+                score=0;
+                enemy.respawn();
+            }
+        }
+
+
         text.setString(" SCORE: "+std::to_string(score));
+        lifesText.setString(" LIFES: "+ std::to_string(lifes));
 
         window.clear();
 
@@ -77,6 +119,10 @@ int main()
         window.draw(santa);
         window.draw(gift);
         window.draw(text);
+        window.draw(lifesText);
+        window.draw(enemy);
+        window.draw(textMessage);
+        
         
         //Draw
         //Display-flip

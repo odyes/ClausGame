@@ -1,47 +1,122 @@
 #include "Character.hh"
 
-
 Character::Character()
 {
+    _frame=0;
     _velocity = {4, 4};
-    _texture.loadFromFile("assets/sprites/santa.png");
+    _texture.loadFromFile("assets/sprites/santa2.png");
     _sprite.setTexture(_texture);
+    _sprite.setTextureRect({1, 86, 55 , 74});
     _sprite.setOrigin(_sprite.getGlobalBounds().width/2, _sprite.getGlobalBounds().height);
+}
+
+void Character::cmd()
+{
+
+    _movePosition={0,0};
+    _state=CharacterState::Idle;
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            _movePosition.y= -_velocity.y;
+            _state=CharacterState::Move;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            _movePosition.x= -_velocity.x;
+            _state=CharacterState::Move;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            _movePosition.y= _velocity.y;
+            _state=CharacterState::Move;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            _movePosition.x= _velocity.x;
+            _state=CharacterState::Move;
+        }
 }
 
 void Character::update()
 {
-    _velocity= { 0,0 };
+   /* _velocity= { 0,0 };
+
+   // _frame+= 0.2;
+//    if(_frame>=3)
+    //{
+        //_frame=0;
+    //}
+
+//    _sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
  
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             _velocity.y = -4;
+            _sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             _velocity.x = -4;
+            _sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
             _velocity.y = 4;
+            _sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             _velocity.x = 4;
+            //_sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
+        }*/
+
+        switch (_state)
+        {
+        case CharacterState::Idle:
+            _sprite.setTextureRect({56, 86, 50 , 74});
+            
+            break;
+        case CharacterState::Move:
+              _frame+= 0.2;
+              if(_frame>=3)
+              {
+                _frame=0;
+              }
+
+              _sprite.setTextureRect({1+int(_frame)*55, 86, 50 , 74});
+              _sprite.move(_movePosition);
+
+              if(_movePosition.x < 0)
+              {
+                 _sprite.setScale(-1, 1);
+              }
+              else if (_movePosition.x > 0)
+              {
+                 _sprite.setScale(1, 1);
+              } 
+        
+            break;
+        default:
+            break;
         }
 
-        _sprite.move(_velocity);
-        if(_velocity.x < 0)
+        //_sprite.move(_velocity);
+
+        /*if(_velocity.x < 0)
         {
             _sprite.setScale(-1, 1);
         }
         else if (_velocity.x > 0)
         {
             _sprite.setScale(1, 1);
-        }
+        }*/
         
 
         //Para que no se salga del cuadro
@@ -75,4 +150,8 @@ void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 sf::FloatRect Character::getBounds() const
 {
     return _sprite.getGlobalBounds();
+}
+
+void Character::hited()
+{
 }
