@@ -1,17 +1,16 @@
 # 1.- Introducción
 
-## 1.1 Abstract
+### 1.1 Abstract
 Nuestro objetivo en este proyecto final es crear un juego usando los conocimientos obtenidos en la materia de programación orientada a objetos utilizando programación en C++. El juego fue creado utilizando la librería SMFL y Box2D, con algunos extras agregados por nosotros mismos.
 
 
-## 1.2 Introducción
+### 1.2 Introducción
 Para iniciar nuestro proyecto decidimos concentrarnos en lo importante y comenzamos a establecer las bases de investigación de nuestro proyecto, las cuales fueron, principalmente, investigar sobre librerías SFML, implementaciones de Box2D y creación de sprites. El proyecto fue realizado en su totalidad usando el editor Visual Studio Code de Microsoft.
 El videojuego que creamos esta basado en C++, utilizando todos los conocimientos y conceptos establecidos en clase. Utilizando estas herramientas, pudimos expandir nuestro conocimiento sobre Box2D y sobre la biblioteca SFML para poder implementarlos de una manera eficiente en el juego. También investigamos en línea para aclarar unas dudas que teníamos sobre los objetos y sobre el movimiento del personaje.
 El juego lo decidimos crear con temática navideña ya que las fechas se aproximan y quisimos crear algo con un ambiente navideño, utilizando sprites y backgrounds relacionados con la navidad y el invierno.
 
 
-  
-## 1.3 Antecedentes  
+### 1.3 Antecedentes  
 SFML fue creado en el 2007 por el SFML team, SFML permite crear aplicaciones multiplataformas que hace transparente el sistema de ventanas y eventos de un sistema operativo. SFML (Simple and Fast Multimedia Library) está escrito en C++ con un enfoque orientado a objetos para el desarrollo de aplicaciones interactivas enfocada en el desarrollo de juegos 2D, y con las versiones más recientes en 3D. Adicionalmente, SFML tiene diversos binding para los lenguajes de programación C, basados en .Net, D, Java, Python, Ruby, Go, OCaml, Nimrod, Euphoria y Rust.
 Box2D es un motor de fisicas rígidas 2D escrita en C++ por Erin Catto. Este motor ha sido utilizado en una gran cantidad de juegos, incluyendo a unos muy reconocibles como angry birds, shovel knight o happy wheels. Box2D utiliza la licencia zlib y se puede usar de manera gratuita. Box2D fue desarrollado en Windows utilizando Visual C++. También existen puertos disponibles para Java, C#, y Python. 
 Diversos historiadores, entre ellos el español, Francisco José Gómez Fernández, explican que Santa Claus está basado en el obispo cristiano Nicolás de Bari, nacido en el siglo III d.C. en Patara, una ciudad marítima y comercial en la provincia de Antalya, hoy Turquía.
@@ -20,21 +19,27 @@ Durante el siglo XVIII, una imagen de San Nicolás de Bari vestido de obispo y d
 
 # 2.- Desarrollo
 
-## 2.1 Diseño y temática del juego
+### 2.1 Diseño y temática del juego
 Ya que nos decidimos por tener una temática navideña, comenzamos a buscar los sprites que utilizaríamos para la creación de nuestro videojuego. Después de conseguir ideas decidimos utilizar de personaje a Santa Claus ya que es un personaje altamente reconocible y fácil de implementar en un juego. Después de definir el personaje, comenzamos a pensar sobre la dinámica del juego y utilizamos un regalo como el objeto a buscar y a un monstruo como el enemigo principal. Con esto establecido pudimos investigar en línea y encontramos sprites que se apegaban a la ambientación que estábamos buscando (Creditos a los autores en bibliografía).
-![gift](https://user-images.githubusercontent.com/75157915/144989655-ee0d4895-32c4-44ca-9b48-2a753210f86a.png)
+![gift](https://user-images.githubusercontent.com/75157915/144991318-3c741d0e-e731-4146-b5d9-e73d433ab03c.png)
 ![santa2](https://user-images.githubusercontent.com/75157915/144989582-3da9d092-92fa-45c1-b483-91ac624243fe.png)
+![snow](https://user-images.githubusercontent.com/75157915/144990877-05f0ebe3-ef58-4fe6-9992-3acf3f53ad89.jpg)
+![enemy1](https://user-images.githubusercontent.com/75157915/144990931-8577d68f-2027-4c02-b86f-85f8d95ccd5a.png)
 
 
-## 2.2 Animación del personaje
+### 2.2 Animación del personaje
 Para darle más chispa al movimiento de Claus decidimos agregarle una animación simple de movimiento, incluimos una clase llamada “animación” y incluimos un archivo cc para tener a la mano la configuración de los movimientos. De esta manera logramos dar la impresión de que Claus corre mientras recoge regalos en el juego.
-## 2.3 Regalos
+
+###2.3 Regalos
 Con el regalo decidimos hacer un item que se ganen puntos cada que se pasa por encima de el y reaparezca en otro lado del mapa. Para hacer esto creamos una clase con el nombre de “gift” con un archivo cc y le aplicamos un respawn con un randomizador para asegurarnos que el regalo no aparezca en el mismo lugar de nuevo, de esta manera logramos hacer que el regalo aparezca de nuevo en un lugar nuevo cada vez que Claus pasa por encima de él.
-## 2.4 Enemigo 
+
+### 2.4 Enemigo 
 Aquí decidimos darle un enemigo a Claus para crearle un desafío al jugar mientras trata de conseguir todos los regalos posibles. Con el enemigo utilizamos de nuevo los componentes que utilizamos en el archivo gift pero le dimos propiedades distintas para que interactúe de la manera deseada con Claus. El enemigo decidimos que se movería a través del mapa y que el personaje tiene que evitarlo mientras trata de obtener regalos. Con esto en cuenta, establecimos las posiciones por las cuales el enemigo se movería y hicimos que el monstruo sea constante para que no desaparezca.
-## 2.5 Score y Vidas
+
+### 2.5 Score y Vidas
 Nuestro plan con el puntaje y las vidas era crear una sensación de un minijuego arcade que te da un numero de vidas y tu tienes que conseguir el score más alto que puedas antes de que se acaben las vidas.
 Para contar el score utilizamos la interacción de el personaje con los regalos para que cada vez que Claus pasara por encima de uno el score se actualizara, para las vidas utilizamos el mismo mecanismo, pero con un limite de 3 vidas para crearle más desafío al jugador.
+
 
 # 3.- Contenido de clases 
 * En la clase Main es donde incluimos toda la programación esencial del juego, aquí es donde cargamos todas las interacciones que tienen los personajes y es donde programas el sistema de puntaje y de vidas para que se pueda interactuar con las otras clases de una manera simple.
@@ -46,6 +51,7 @@ Para contar el score utilizamos la interacción de el personaje con los regalos 
 
 # 4.- Resultado
 Finalmente pudimos terminar el videojuego y logramos implementar lo que teníamos en mente. Pudimos crear un juego y logramos terminar el proyecto de una manera satisfactoria ya que pudimos crear un sistema de vidas y puntos exitoso, con ambientación navideña que tuviera un plan de juego simple, con un objetivo y un enemigo que genere desafío a la hora de jugar. 
+
 
 # 5.- Conclusión
 En definitiva, este proyecto fue una experiencia de aprendizaje que nos dejo muchas enseñanzas sobre la creación de juegos en SFML y sobre la creación de cualquier tipo de proyecto en general. Este proyecto nos ayudo a aplicar varios de los conceptos vistos en clase previamente y nos permitió crear algo desde cero con nuestra creatividad mientras nos mostraba muchas otras oportunidades de aprendizaje a lo largo del desarrollo de este mismo. Con todo lo anterior, podemos decir que comprendimos mucho mejor el uso de SFML y la programación en C++ y fuimos capaces de completar la meta que nos pusimos con el juego que creamos de una manera funcional y eficiente. 
